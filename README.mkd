@@ -9,11 +9,11 @@ First initialize minilocale object with dictionary
 
     var Action;
     Action = fucntion() {
-        this.locale = new MiniLocale( Action.dict , "fr" );
+        this.locale = new MiniLocale( Action.dict , "fr" ); // speak french
         this.loc   = this.locale.loc;
     };
 
-And you can define your dictionary:
+Then you can define your dictionary:
 
     Action.dict = {
         zh_tw: { 
@@ -23,4 +23,11 @@ And you can define your dictionary:
             "Hello": "Salut"
         }
     };
+
+In your code:
+
+    Action.blah = function() {
+        console.log( this.loc( "Hello" ) );
+    };
+
 
