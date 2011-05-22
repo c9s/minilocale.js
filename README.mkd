@@ -10,6 +10,10 @@ First initialize minilocale object with dictionary
     var Action;
     Action = fucntion() {
         this.locale = new MiniLocale( Action.dict , "fr" ); // speak french
+
+        // or
+        this.locale = new MiniLocale( Action.dict , "fr" , { ignoreCase: true } ); // speak french
+
     };
 
 Then you can define your dictionary:
@@ -28,5 +32,13 @@ In your code:
     Action.blah = function() {
         console.log( this.loc( "Hello" ) );
     };
+
+
+
+# Options
+
+ignoreCase:  ignore msgid case.
+
+ignoreLangCase:   ignore lang tag case.
 
 
