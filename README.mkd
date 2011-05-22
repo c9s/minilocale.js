@@ -4,17 +4,19 @@ mini locale for your javascript class.
 
 ## Usage
 
+### Use Case 1
+
 First initialize minilocale object with dictionary 
     and language name in your object constructor.
 
     var Action;
     Action = fucntion() {
-        this.locale = new MiniLocale( Action.dict , "fr" ); // speak french
+        this.locale = new MiniLocale( Action.dict , "fr" , { injectLoc: true } ); // speak french
 
         // or
-        this.locale = new MiniLocale( Action.dict , "fr" , { ignoreCase: true } ); // speak french
-
+        this.locale = new MiniLocale( Action.dict , "fr" , { injectLoc: true, ignoreCase: true } ); // speak french
     };
+
 
 Then you can define your dictionary:
 
@@ -34,11 +36,25 @@ In your code:
     };
 
 
+### Use Case 2
+
+
+    Action.dict = { 
+        zh_tw: { ... },
+        fr: { ... }
+    };
+
+    Action.loc = new MiniLocale( Action.dict , "fr" , { returnLoc: true } );  // returns loc method
+    
 
 # Options
 
 ignoreCase:  ignore msgid case.
 
 ignoreLangCase:   ignore lang tag case.
+
+injectLoc:     inject loc method to caller's prototype.
+
+
 
 
