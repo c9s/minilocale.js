@@ -10,7 +10,6 @@ First initialize minilocale object with dictionary
     var Action;
     Action = fucntion() {
         this.locale = new MiniLocale( Action.dict , "fr" ); // speak french
-        this.loc   = this.locale.loc;
     };
 
 Then you can define your dictionary:
