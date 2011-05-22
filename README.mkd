@@ -1,0 +1,26 @@
+# MiniLocale.js
+
+mini locale for your javascript class.
+
+## Usage
+
+First initialize minilocale object with dictionary 
+    and language name in your object constructor.
+
+    var Action;
+    Action = fucntion() {
+        this.locale = new MiniLocale( Action.dict , "fr" );
+        this.loc   = this.locale.loc;
+    };
+
+And you can define your dictionary:
+
+    Action.dict = {
+        zh_tw: { 
+            "Hello": "你好"
+        },
+        fr: { 
+            "Hello": "Salut"
+        }
+    };
+
