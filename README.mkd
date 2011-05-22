@@ -22,17 +22,17 @@ Then you can define your dictionary:
 
     Action.dict = {
         zh_tw: { 
-            "Hello": "你好"
+            "Hello %1": "你好 %1"
         },
         fr: { 
-            "Hello": "Salut"
+            "Hello %1": "Salut %1"
         }
     };
 
 In your code:
 
     Action.blah = function() {
-        console.log( this.loc( "Hello" ) );
+        console.log( this.loc( "Hello %1" , "John" ) );
     };
 
 
@@ -45,7 +45,8 @@ In your code:
     };
 
     Action.loc = new MiniLocale( Action.dict , "fr" , { returnLoc: true } );  // returns loc method
-    
+
+    Action.loc( "Hello %1" , "John" ); // get "Hello John"
 
 # Options
 

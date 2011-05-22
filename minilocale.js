@@ -27,12 +27,29 @@ var MiniLocale = function(dict,lang,opts) {
     }
 
     var that = this;
+
+
+    /* applyArgs( 'hello %1' , [ "John" ] ); */
+    var varreg = /^%(\d+)$/;
+    var applyArgs = function(str,args) {
+        // support gettext style.
+        var tokens = str.split(/(%\d+)/);
+        for(var i = 0; i < tokens.length; i++) {
+            var match = varreg.exec(tokens[i]);
+            if(match)
+                tokens[i] = args[parseInt( match[1] ) ];
+        }
+        return tokens.join("");
+    };
+
     var loc = function(msgid) {
+        var msg = msgid;
         if( that.opts.ignoreCase )
-            return that.dict[ that.lang ][ msgid.toLowerCase() ];
-        if( that.dict[ that.lang ] )
-            return that.dict[ that.lang ][ msgid ];
-        return msgid;
+            msgid = msgid.toLowerCase();
+
+        if( that.dict[ that.lang ][ msgid ] )
+            msg = that.dict[ that.lang ][ msgid ];
+        return applyArgs( msg , arguments );
     };
 
     var caller = arguments.callee.caller;
